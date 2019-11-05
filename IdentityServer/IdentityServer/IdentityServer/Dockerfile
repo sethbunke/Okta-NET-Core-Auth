@@ -6,7 +6,7 @@ RUN dotnet restore --packages /packages
 RUN dotnet publish -c Release -o /published 
 
 # Now let's build the app's image. 
-FROM gcr.io/google-appengine/aspnetcore:2.0 
+FROM gcr.io/google-appengine/aspnetcore:2.1 
 COPY --from=builder /published /app 
 ENV ASPNETCORE_URLS=http://*:${PORT} 
 WORKDIR /app 

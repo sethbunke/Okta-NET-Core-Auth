@@ -1,6 +1,7 @@
 ﻿# First let’s build the app and publish it. 
 FROM gcr.io/cloud-builders/csharp/dotnet AS builder 
-COPY . /src WORKDIR /src 
+COPY . /src 
+WORKDIR /src 
 RUN dotnet restore --packages /packages 
 RUN dotnet publish -c Release -o /published 
 

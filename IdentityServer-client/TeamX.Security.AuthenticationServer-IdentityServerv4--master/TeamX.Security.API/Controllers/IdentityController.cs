@@ -11,6 +11,7 @@ namespace TeamX.Security.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            var headers = Request.Headers.ToList();
             return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
         }
     }

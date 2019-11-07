@@ -29,9 +29,24 @@ namespace TeamX.Security.AuthServer
         // API that are allowed to access the Auth server
         public static IEnumerable<ApiResource> GetApiResources()
         {
+            //return new List<ApiResource>
+            //{
+            //    new ApiResource("api1", "My API")
+            //};
+
             return new List<ApiResource>
             {
                 new ApiResource("api1", "My API")
+                {
+                    ApiSecrets = new List<Secret>
+                    {
+                        new Secret("hello".Sha256())
+                    },
+                    Scopes=
+                    {
+                        new Scope("api1")
+                    }
+                }
             };
         }
 
